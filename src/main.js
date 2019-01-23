@@ -21,12 +21,12 @@ Vue.prototype.$store = store
 Vue.prototype.$http = request
 
 // TODO: 测试用
-localStorage.setItem('admin_user', JSON.stringify({email: 'fea@qq.com'}))
-localStorage.setItem('admin_user_invalid', (new Date()).setTime(new Date().getTime()+24*60*60*1000))
+localStorage.setItem('admin_user', JSON.stringify({ email: 'fea@qq.com' }))
+localStorage.setItem('admin_user_invalid', (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
 
 // 判断登录态是否超时
-let nowTime = new Date().getTime()
-let validTime = JSON.parse(localStorage.getItem('admin_user_invalid'))
+const nowTime = new Date().getTime()
+const validTime = JSON.parse(localStorage.getItem('admin_user_invalid'))
 if (validTime === undefined || nowTime > validTime) {
   store.commit('SET_USER', null)
 } else {

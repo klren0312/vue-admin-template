@@ -10,11 +10,11 @@ const request = axios.create({
 
 request.interceptors.response.use(
   response => {
-    let req = JSON.parse(response.request.response)
+    const req = JSON.parse(response.request.response)
     if (req.err_code === 401) {
       store.commit('LOG_OUT')
       router.replace({
-          path: '/login',
+        path: '/login'
       })
       return true
     }
@@ -22,16 +22,17 @@ request.interceptors.response.use(
   },
   error => {
     if (error.response) {
-        switch (error.response.status) {
-            case 401:
-                // 返回 401 清除token信息并跳转到登录页面
-                store.dispatch('SET_USER', null)
-                router.replace({
-                    path: '/login',
-                })
-        }
+      switch (error.response.status) {
+        case 401:
+          // 返回 401 清除token信息并跳转到登录页面
+          store.dispatch('SET_USER', null)
+          router.replace({
+            path: '/login'
+          })
+      }
     }
-    return Promise.reject(error.response.data)   // 返回接口返回的错误信息
-})
+    return Promise.reject(error.response.data) // 返回接口返回的错误信息
+  }
+)
 
 export default request

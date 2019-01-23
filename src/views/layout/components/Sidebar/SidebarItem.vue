@@ -13,7 +13,7 @@
       <template slot="title">
         <item v-if="item.meta" :icon="item.meta.icon" :title="item.meta.title" />
       </template>
-
+      <!-- eslint-disable -->
       <template v-for="child in item.children" v-if="!child.hidden">
         <sidebar-item
           v-if="child.children&&child.children.length>0"
@@ -29,8 +29,8 @@
           </el-menu-item>
         </app-link>
       </template>
+      <!-- eslint-enable -->
     </el-submenu>
-
   </div>
 </template>
 
@@ -81,7 +81,7 @@ export default {
 
       // Show parent if there are no child router to display
       if (showingChildren.length === 0) {
-        this.onlyOneChild = { ... parent, path: '', noShowingChildren: true }
+        this.onlyOneChild = { ...parent, path: '', noShowingChildren: true }
         return true
       }
 

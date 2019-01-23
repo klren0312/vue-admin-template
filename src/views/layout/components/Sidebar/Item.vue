@@ -17,7 +17,7 @@ export default {
     const vnodes = []
 
     if (icon) {
-      let iconStr = `el-icon-${icon}`
+      const iconStr = `el-icon-${icon}`
       vnodes.push(<i class={iconStr}></i>)
     }
 

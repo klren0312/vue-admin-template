@@ -17,10 +17,10 @@
 <script>
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
-import {baseRouters} from '@/router'
+import { baseRouters } from '@/router'
 export default {
   components: { SidebarItem },
-  data () {
+  data() {
     return {
       baseRouters: baseRouters
     }

@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'Navbar',
   methods: {
-    setSidebar () {
+    setSidebar() {
       this.$store.dispatch('SET_COLLAPSE', !this.isCollapse)
     }
   },

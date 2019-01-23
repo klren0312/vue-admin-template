@@ -53,7 +53,7 @@ router.beforeEach((to, from, next) => {
       next()
       NProgress.done()
     } else {
-      next({path: '/'})
+      next({ path: '/' })
       NProgress.done()
     }
   } else {
@@ -61,13 +61,13 @@ router.beforeEach((to, from, next) => {
       next()
       NProgress.done()
     } else {
-      next({path: '/login'})
+      next({ path: '/login' })
       NProgress.done()
     }
   }
 })
 
-router.afterEach( () => {
+router.afterEach(() => {
   NProgress.done()
 })
 

@@ -10,25 +10,25 @@ export default {
   /**
    * 刷新页面方法
    */
-  provide () {
+  provide() {
     return {
       reload: this.reload
     }
   },
-  data () {
+  data() {
     return {
       isRouterAlive: true
     }
   },
   methods: {
-    reload () {
+    reload() {
       this.isRouterAlive = false
       this.$nextTick(_ => {
         this.isRouterAlive = true
       })
     }
   },
-  created () {
+  created() {
     try {
       document.body.removeChild(document.getElementById('bouncing-loader'))
     } catch (e) {
