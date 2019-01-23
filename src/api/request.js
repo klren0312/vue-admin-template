@@ -8,6 +8,21 @@ const request = axios.create({
   timeout: 12000
 })
 
+service.interceptors.request.use(
+  config => {
+    let user = JSON.parse(localStorage.getItem('admin_user'))
+    if (user) {
+      // 配置token
+      config.headers['Authorization'] = user.token
+    }
+    config.headers['Content-Type'] = 'application/json'
+    return config
+  },
+  error => {
+    Promise.reject(error)
+  }
+)
+
 request.interceptors.response.use(
   response => {
     const req = JSON.parse(response.request.response)

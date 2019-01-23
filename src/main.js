@@ -21,7 +21,7 @@ Vue.prototype.$store = store
 Vue.prototype.$http = request
 
 // TODO: 测试用
-localStorage.setItem('admin_user', JSON.stringify({ email: 'fea@qq.com' }))
+localStorage.setItem('admin_user', JSON.stringify({ token: 'testtestestest' }))
 localStorage.setItem('admin_user_invalid', (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
 
 // 判断登录态是否超时
