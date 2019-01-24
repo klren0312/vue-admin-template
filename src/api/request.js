@@ -8,9 +8,9 @@ const request = axios.create({
   timeout: 12000
 })
 
-service.interceptors.request.use(
+request.interceptors.request.use(
   config => {
-    let user = JSON.parse(localStorage.getItem('admin_user'))
+    const user = JSON.parse(localStorage.getItem('admin_user'))
     if (user) {
       // 配置token
       config.headers['Authorization'] = user.token

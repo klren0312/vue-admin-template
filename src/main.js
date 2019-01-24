@@ -8,7 +8,7 @@ import 'normalize.css/normalize.css'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
-import './assets/index.scss' // 全局样式
+import './assets/scss/index.scss' // 全局样式
 import * as filters from './filters'
 
 Object.keys(filters).forEach(key => {

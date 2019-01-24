@@ -20,7 +20,7 @@ export const baseRouters = [
     children: [
       {
         path: 'home',
-        component: resolve => require(['@/views/Home.vue'], resolve),
+        component: resolve => require(['@/views/homePage'], resolve),
         name: 'Home',
         meta: {
           title: '首页',
@@ -29,7 +29,7 @@ export const baseRouters = [
       },
       {
         path: 'test',
-        component: resolve => require(['@/views/Test.vue'], resolve),
+        component: resolve => require(['@/views/testPage'], resolve),
         name: 'Test',
         meta: {
           title: '测试',
