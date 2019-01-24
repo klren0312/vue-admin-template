@@ -15,7 +15,7 @@ export const baseRouters = [
     redirect: 'home',
     meta: {
       title: 'dashboard',
-      icon: 'close'
+      icon: 'test'
     },
     children: [
       {
@@ -24,7 +24,7 @@ export const baseRouters = [
         name: 'Home',
         meta: {
           title: '首页',
-          icon: 'close'
+          icon: 'test'
         }
       },
       {
@@ -33,7 +33,7 @@ export const baseRouters = [
         name: 'Test',
         meta: {
           title: '测试',
-          icon: 'check'
+          icon: 'test'
         }
       }
     ]

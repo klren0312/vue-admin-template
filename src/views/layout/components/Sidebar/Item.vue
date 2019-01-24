@@ -17,7 +17,7 @@ export default {
     const vnodes = []
 
     if (icon) {
-      const iconStr = `el-icon-${icon}`
+      const iconStr = `iconfont icon-${icon}`
       vnodes.push(<i class={iconStr}></i>)
     }
 
@@ -28,3 +28,10 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+i {
+  margin-right: 12px;
+}
+</style>
+
