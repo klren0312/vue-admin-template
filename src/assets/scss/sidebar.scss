@@ -112,6 +112,16 @@
         }
       }
     }
+
+    .is-active {
+      &.el-submenu {
+        .el-submenu__title {
+          i {
+            color: rgb(64, 158, 255);
+          }
+        }
+      }
+    }
   }
 
   .sidebar-container .nest-menu .el-submenu>.el-submenu__title,
