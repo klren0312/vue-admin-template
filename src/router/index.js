@@ -8,6 +8,16 @@ NProgress.configure({ showSpinner: false })
 Vue.use(Router)
 /* Layout */
 const Layout = resolve => require(['@/views/layout/Layout.vue'], resolve)
+
+/**
+* hidden: true                   如果 `hidden:true` 将不会在菜单栏显示(默认 false)
+* redirect: noredirect           重定向
+* name:'router-name'             用于 <keep-alive> 的路由名称(必须设置!!!)
+* meta : {
+    title: 'title'               菜单标题
+    icon: 'svg-name'             图标
+  }
+**/
 export const baseRouters = [
   {
     path: '',
@@ -35,6 +45,16 @@ export const baseRouters = [
           title: '测试',
           icon: 'test'
         }
+      },
+      {
+        path: 'test/:id',
+        component: resolve => require(['@/views/testPage'], resolve),
+        name: 'Value',
+        meta: {
+          title: '带参',
+          icon: 'test'
+        },
+        hidden: true
       }
     ]
   }
