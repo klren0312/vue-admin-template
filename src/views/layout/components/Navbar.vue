@@ -1,8 +1,8 @@
 <template>
   <div class="navbar">
-    <div class="collapse-ctrl">
+    <!-- <div class="collapse-ctrl">
       <i class="nav-icon" @click="setSidebar" ></i>
-    </div>
+    </div> -->
     <div class="right">
       <!-- <div class="avatar">
         <img class="avatar-img" src="../../../assets/avatar-icon.png" alt="">
