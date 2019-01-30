@@ -2,6 +2,7 @@
   <div>
     <h1>Test</h1>
     <router-link to="test/1">带参</router-link>
+    <el-input @input.native="inputChange"></el-input>
     <tree-table :data="data" :columns="columns" :expandAll="true">
       <el-table-column label="时间线">
         <template slot-scope="scope">
@@ -18,6 +19,7 @@
 </template>
 <script>
 import TreeTable from '@/components/TreeTable'
+import { throttle } from '@/utils'
 export default {
   name: 'Test',
   components: {
@@ -116,6 +118,11 @@ export default {
   },
   mounted() {
     console.log(this.$route.params)
+  },
+  methods: {
+    inputChange: throttle(function(val) {
+      console.log(val)
+    }, 5000)
   }
 }
 </script>
