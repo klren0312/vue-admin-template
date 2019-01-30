@@ -2,7 +2,17 @@
   <div>
     <h1>Test</h1>
     <router-link to="test/1">带参</router-link>
-    <tree-table :data="data" :expandAll="true">
+    <tree-table :data="data" :columns="columns" :expandAll="true">
+      <el-table-column label="时间线">
+        <template slot-scope="scope">
+          {{scope.row.timeLine}}
+        </template>
+      </el-table-column>
+      <el-table-column label="操作" width="200">
+        <template slot-scope="scope">
+          <el-button type="text" @click="message(scope.row)">点击</el-button>
+        </template>
+      </el-table-column>
     </tree-table>
   </div>
 </template>
@@ -15,6 +25,11 @@ export default {
   },
   data() {
     return {
+      columns: [{
+        text: '事件',
+        value: 'event',
+        width: 200
+      }],
       data: [
         {
           id: 0,
@@ -25,7 +40,7 @@ export default {
         {
           id: 1,
           event: '事件1',
-          timeLine: 100,
+          timeLine: null,
           comment: '无',
           children: [
             {

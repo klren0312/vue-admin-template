@@ -86,8 +86,9 @@ export default {
     toggleExpanded: function(trIndex) {
       // 通过序号找到父节点
       const record = this.formatData[trIndex]
+      console.log(trIndex, record)
       // 设置展开属性
-      record._expended = !record._expended
+      record._expanded = !record._expanded
     },
     /**
      * 图标显示
