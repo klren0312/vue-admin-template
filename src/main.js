@@ -8,6 +8,7 @@ import 'normalize.css/normalize.css'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
+import Storage from './utils/storage'
 import './assets/scss/index.scss' // 全局样式
 import * as filters from './filters'
 
@@ -19,18 +20,17 @@ Vue.use(Element)
 Vue.config.productionTip = false
 Vue.prototype.$store = store
 Vue.prototype.$http = request
+Vue.prototype.$storage = Storage
 
 // TODO: 测试用
-localStorage.setItem('admin_user', JSON.stringify({ token: 'testtestestest' }))
-localStorage.setItem('admin_user_invalid', (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
+Storage.set('admin_user', JSON.stringify({ token: 'testtestestest' }), (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
 
 // 判断登录态是否超时
-const nowTime = new Date().getTime()
-const validTime = JSON.parse(localStorage.getItem('admin_user_invalid'))
-if (validTime === undefined || nowTime > validTime) {
+const userData = Storage.get('admin_user')
+if (userData === null) {
   store.commit('SET_USER', null)
 } else {
-  store.commit('SET_USER', JSON.parse(localStorage.getItem('admin_user')))
+  store.commit('SET_USER', JSON.parse(userData))
 }
 
 new Vue({
