@@ -16,17 +16,19 @@ Object.keys(filters).forEach(key => {
   Vue.filters(key, filters[key])
 })
 
+const storage = new Storage()
+
 Vue.use(Element)
 Vue.config.productionTip = false
 Vue.prototype.$store = store
 Vue.prototype.$http = request
-Vue.prototype.$storage = Storage
+Vue.prototype.$storage = storage
 
 // TODO: 测试用
-Storage.set('admin_user', JSON.stringify({ token: 'testtestestest' }), (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
+storage.set('admin_user', JSON.stringify({ token: 'testtestestest' }), (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
 
 // 判断登录态是否超时
-const userData = Storage.get('admin_user')
+const userData = storage.get('admin_user')
 if (userData === null) {
   store.commit('SET_USER', null)
 } else {

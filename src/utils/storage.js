@@ -10,7 +10,7 @@ export default class Storage {
    * @param {Object} entity 存储实例
    */
   static __isExpired(entity) {
-    if(!entity) return true // 无实例, 即失效
+    if (!entity) return true // 无实例, 即失效
     return Storage.timestamp - (entity.timestamp + entity.expired_second) >= 0
   }
 
@@ -20,7 +20,7 @@ export default class Storage {
    * @param {String} value 值
    * @param {Number} expired_second 过期时间 单位秒
    */
-  set (key, value, expired_second) {
+  set(key, value, expired_second) {
     // 存储实例
     const entity = {
       timestamp: Storage.timestamp,
@@ -31,12 +31,12 @@ export default class Storage {
     localStorage.setItem(key, JSON.stringify(entity))
     return this
   }
-  
+
   /**
    * 读取
    * @param {String} key 键
    */
-  get (key) {
+  get(key) {
     let entity
     try {
       entity = localStorage.getItem(key)
@@ -49,7 +49,7 @@ export default class Storage {
       console.error(err)
       return null
     }
-    //没有设置过期时间, 直接返回值
+    // 没有设置过期时间, 直接返回值
     if (!entity.expired_second) return entity.value
 
     // 过期, 删除存储, 返回 null
@@ -65,7 +65,7 @@ export default class Storage {
    * 删除存储
    * @param {String} key 键
    */
-  remove (key) {
+  remove(key) {
     try {
       localStorage.removeItem(key)
     } catch (err) {
@@ -77,7 +77,7 @@ export default class Storage {
   /**
    * 清空存储
    */
-  clear () {
+  clear() {
     try {
       localStorage.clear()
     } catch (err) {
