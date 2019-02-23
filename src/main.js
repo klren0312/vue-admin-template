@@ -25,7 +25,7 @@ Vue.prototype.$http = request
 Vue.prototype.$storage = storage
 
 // TODO: 测试用
-storage.set('admin_user', JSON.stringify({ token: 'testtestestest' }), (new Date()).setTime(new Date().getTime() + 24 * 3600 * 1000))
+storage.set('admin_user', JSON.stringify({ token: 'testtestestest' }), 24 * 3600 * 1000)
 
 // 判断登录态是否超时
 const userData = storage.get('admin_user')
