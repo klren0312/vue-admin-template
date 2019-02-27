@@ -12,7 +12,7 @@
 
 <script>
 import Sortable from 'sortablejs'
-
+import { throttle } from '../../utils'
 export default {
   name: 'Home',
   data() {
@@ -39,6 +39,16 @@ export default {
           this.testData.splice(evt.newIndex, 0, targetRow)
         }
       })
+    },
+    saveSort: throttle(function() {
+      console.log(JSON.stringify(this.testData))
+    }, 2000)
+  },
+  watch: {
+    testData: {
+      handler: function() {
+        this.saveSort()
+      }
     }
   }
 
