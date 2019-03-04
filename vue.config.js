@@ -1,6 +1,7 @@
 const path = require('path')
 const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
-
+const CompressionWebpackPlugin = require('compression-webpack-plugin')
+const productionGzipExtensions = ['js', 'css'];
 module.exports = {
   productionSourceMap: false,
   configureWebpack: (config) => {
@@ -13,6 +14,22 @@ module.exports = {
       minimize: true,
       quiet: true
     }))
-  },
-  parallel: require('os').cpus().length > 1, // 构建开启多进程处理babel编译
+    config.plugins.push(new CompressionWebpackPlugin({
+      algorithm: 'gzip',
+      test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+      threshold: 10240,
+      minRatio: 0.8
+    }))
+    config.plugins.push(new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          warnings: false,
+          drop_debugger: true,
+          drop_console: true,
+        },
+      },
+      sourceMap: false,
+      parallel: true,
+    }))
+  }
 }
