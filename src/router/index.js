@@ -36,25 +36,6 @@ export const baseRouters = [
           title: '首页',
           icon: 'test'
         }
-      },
-      {
-        path: 'test',
-        component: resolve => require(['@/views/testPage'], resolve),
-        name: 'Test',
-        meta: {
-          title: '测试',
-          icon: 'test'
-        }
-      },
-      {
-        path: 'test/:id',
-        component: resolve => require(['@/views/testPage'], resolve),
-        name: 'Value',
-        meta: {
-          title: '带参',
-          icon: 'test'
-        },
-        hidden: true
       }
     ]
   }
